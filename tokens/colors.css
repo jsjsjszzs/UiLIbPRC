@@ -4,6 +4,7 @@
 --green-100:#e2f5e8;--green-500:#1f9d55;--green-700:#166b3a;
 --red-100:#fbe4e0;--red-500:#e0432b;--red-700:#a52d1a;
 --amber-100:#faedd0;--amber-500:#dd9d16;--amber-700:#966b0c;
+--blue-500:#007aff;
 --surface-app:var(--gray-50);
 --surface-sunken:var(--gray-150);
 --surface-card:var(--gray-100);
@@ -28,4 +29,5 @@
 --warning:var(--amber-500);
 --warning-tint:var(--amber-100);
 --focus-ring:var(--gray-900);
+--cta:var(--blue-500);
 }

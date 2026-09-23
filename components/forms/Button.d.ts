@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 export interface ButtonProps {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'subtle' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'subtle' | 'ghost' | 'danger' | 'mainCta';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   icon?: ReactNode;

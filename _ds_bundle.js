@@ -238,6 +238,11 @@ const VARIANTS = {
   danger: {
     background: 'var(--danger)',
     color: 'var(--fg-inverse)'
+  },
+  mainCta: {
+    background: 'var(--cta)',
+    color: 'var(--fg-inverse)',
+    borderRadius: 'var(--radius-sm)'
   }
 };
 function Button({

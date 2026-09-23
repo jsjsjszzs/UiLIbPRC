@@ -53,8 +53,8 @@
         "message": "<Button> doesn't accept that prop. Declared props: children, variant, size, disabled, icon, onClick, type."
       },
       {
-        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|subtle|ghost|danger)$/]",
-        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'subtle' | 'ghost' | 'danger'."
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|subtle|ghost|danger|mainCta)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'subtle' | 'ghost' | 'danger' | 'mainCta'."
       },
       {
         "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
@@ -201,11 +201,13 @@
       "--amber-100",
       "--amber-500",
       "--amber-700",
+      "--blue-500",
       "--brand",
       "--brand-hover",
       "--brand-press",
       "--brand-tint",
       "--brand-tint-strong",
+      "--cta",
       "--danger",
       "--danger-tint",
       "--divider",
@@ -313,6 +315,7 @@
       "--amber-100": "color",
       "--amber-500": "color",
       "--amber-700": "color",
+      "--blue-500": "color",
       "--surface-app": "color",
       "--surface-sunken": "color",
       "--surface-card": "color",
@@ -337,6 +340,7 @@
       "--warning": "color",
       "--warning-tint": "color",
       "--focus-ring": "color",
+      "--cta": "color",
       "--font-display": "font",
       "--font-body": "font",
       "--font-mono": "font",
