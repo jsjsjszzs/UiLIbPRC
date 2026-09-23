@@ -1,0 +1,67 @@
+<!-- @dsCard group="Console" viewport="1280x760" name="Console app" subtitle="Generic dashboard demonstrating the kit end-to-end" -->
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0}</style></head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {Button,IconButton,Input,Badge,Tag,Card,Tabs,Switch,Dialog}=window.PRCDesignSystem_ab70b2;
+const rows=[
+{name:'Acme Retail GmbH',status:'Active',plan:'Team',mrr:'€1,240'},
+{name:'Nordwind Logistik',status:'Active',plan:'Pro',mrr:'€480'},
+{name:'Blaupause AG',status:'Trialing',plan:'Pro',mrr:'€0'},
+{name:'Kiesel & Partner',status:'Past due',plan:'Team',mrr:'€1,240'},
+];
+const tone={Active:'success',Trialing:'brand',['Past due']:'danger'};
+function NavItem({label,active}){
+return <div style={{padding:'11px 16px',borderRadius:'var(--radius-pill)',font:'var(--text-body-sm)',fontWeight:active?600:400,background:active?'var(--surface-sunken)':'transparent',color:active?'var(--fg-1)':'var(--fg-2)',cursor:'pointer'}}>{label}</div>;
+}
+function App(){
+const [tab,setTab]=React.useState('accounts');
+const [notify,setNotify]=React.useState(true);
+const [open,setOpen]=React.useState(false);
+return <div style={{display:'flex',height:'100vh',background:'var(--surface-app)',fontFamily:'var(--font-body)'}}>
+<div style={{width:220,padding:'28px 16px',display:'flex',flexDirection:'column',gap:4}}>
+<div style={{font:'800 22px var(--font-display)',color:'var(--fg-1)',padding:'0 16px 20px'}}>PRC</div>
+<NavItem label="Overview" />
+<NavItem label="Accounts" active/>
+<NavItem label="Billing" />
+<NavItem label="Settings" />
+</div>
+<div style={{flex:1,padding:'28px 36px',overflow:'auto'}}>
+<div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:24}}>
+<div style={{font:'var(--text-h1)',color:'var(--fg-1)'}}>Accounts</div>
+<div style={{display:'flex',gap:10}}>
+<Input placeholder="Search accounts"/>
+<Button variant="primary" onClick={()=>setOpen(true)}>New account</Button>
+</div>
+</div>
+<div style={{display:'flex',gap:16,marginBottom:24}}>
+<Card><div style={{font:'var(--text-caption)',color:'var(--fg-2)',marginBottom:6}}>MRR</div><div style={{font:'var(--text-h2)',color:'var(--fg-1)'}}>€2,960</div></Card>
+<Card><div style={{font:'var(--text-caption)',color:'var(--fg-2)',marginBottom:6}}>Active accounts</div><div style={{font:'var(--text-h2)',color:'var(--fg-1)'}}>2</div></Card>
+<Card><div style={{font:'var(--text-caption)',color:'var(--fg-2)',marginBottom:6}}>Churn (30d)</div><div style={{font:'var(--text-h2)',color:'var(--fg-1)'}}>0.4%</div></Card>
+</div>
+<div style={{marginBottom:16}}><Tabs tabs={[{value:'accounts',label:'All'},{value:'trial',label:'Trialing'},{value:'past',label:'Past due'}]} active={tab} onChange={setTab}/></div>
+<Card padding="0">
+{rows.map((r,i)=><div key={r.name} style={{display:'flex',alignItems:'center',gap:16,padding:'16px 24px',borderBottom:i<rows.length-1?'1px solid var(--divider)':'none'}}>
+<div style={{flex:1,font:'var(--text-body)',color:'var(--fg-1)'}}>{r.name}</div>
+<Badge tone={tone[r.status]}>{r.status}</Badge>
+<Tag>{r.plan}</Tag>
+<div style={{width:80,textAlign:'right',font:'var(--text-body-sm)',color:'var(--fg-2)'}}>{r.mrr}</div>
+<IconButton label="More" icon={<span>⋯</span>} variant="ghost" size="sm"/>
+</div>)}
+</Card>
+<div style={{marginTop:24}}><Switch label="Email me weekly billing summaries" checked={notify} onChange={setNotify}/></div>
+</div>
+<Dialog open={open} title="New account" onClose={()=>setOpen(false)} actions={<><Button variant="subtle" onClick={()=>setOpen(false)}>Cancel</Button><Button variant="primary" onClick={()=>setOpen(false)}>Create</Button></>}>
+<Input label="Company name" placeholder="e.g. Rosenholz GmbH"/>
+</Dialog>
+</div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body></html>

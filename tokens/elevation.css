@@ -1,0 +1,9 @@
+:root{
+--shadow-none:none;
+--shadow-overlay:0 16px 40px rgba(27,25,23,0.16);
+--shadow-overlay-sm:0 8px 20px rgba(27,25,23,0.12);
+--ease-standard:cubic-bezier(.2,.8,.2,1); /* @kind other */
+--duration-fast:120ms; /* @kind other */
+--duration-base:180ms; /* @kind other */
+--duration-slow:260ms; /* @kind other */
+}
